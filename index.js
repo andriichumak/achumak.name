@@ -10,15 +10,15 @@ import configureStore from './store';
 import Root from './components/Root';
 import moment from 'moment';
 
+// import 'normalize.css/normalize.css'
+import './style/global.less'
+
 moment.locale('en-gb');
 
 const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);
 
-const app = document.createElement('div');
-document.body.appendChild(app);
-
 render(
 	<Root store={store} history={history} />,
-	app
+	document.getElementById('app')
 );

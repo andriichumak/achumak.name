@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin  = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const extractLESS = new ExtractTextWebpackPlugin('style.css', {
 	allChunks: true
@@ -18,6 +19,9 @@ module.exports = {
 		path: path.join(__dirname, 'dist'),
 		publicPath: '/',
 		filename: 'bundle.js'
+	},
+	devServer: {
+		historyApiFallback: true
 	},
 	module: {
 		loaders: [
@@ -47,7 +51,7 @@ module.exports = {
 			{ test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,    loader: "url?limit=10000&minetype=application/octet-stream" },
 			{ test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,    loader: "file" },
 			{ test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,    loader: "url?limit=10000&minetype=image/svg+xml" },
-			{ test: /\.png$/, loader: "file"}
+			{ test: /\.(png|jpg|jpeg)$/, loader: "file"}
 		]
 	},
 	postcss: [ autoprefixer({ browsers: ['last 2 versions'] }) ],
@@ -55,27 +59,27 @@ module.exports = {
 		new webpack.optimize.OccurrenceOrderPlugin(),
 		new HtmlWebpackPlugin({
 			title: 'Andrii Chumak - Software Engineer',
-			favicon: './favicon.ico'
+			favicon: './assets/favicon.ico',
+			template: './index.ejs'
 		}),
 		new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en/),
+		new CopyWebpackPlugin([{
+			from: 'assets',
+			to: 'assets'
+		}]),
+		new webpack.DefinePlugin({
+			'process.env.NODE_ENV': isDev ? '"development"' : '"production"'
+		})
 	]
 };
 
 if (isDev) {
 	module.exports.devtool = 'cheap-source-map';
-	module.exports.entry.unshift('webpack-hot-middleware/client');
 	module.exports.plugins.push(
-		new webpack.DefinePlugin({
-			'process.env.NODE_ENV': '"development"'
-		}),
-		new webpack.HotModuleReplacementPlugin(),
 		new webpack.NoErrorsPlugin()
 	);
 } else {
 	module.exports.plugins.push(
-		new webpack.DefinePlugin({
-			'process.env.NODE_ENV': '"production"'
-		}),
 		extractLESS,
 		new webpack.optimize.DedupePlugin()
 	);
