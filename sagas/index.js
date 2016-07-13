@@ -3,14 +3,10 @@
  */
 import { fork } from 'redux-saga/effects';
 
+import skillsSaga from './skills'
+
 export default function* () {
 	yield [
-		// fork(sessionSaga),
-		// fork(messageSage),
-		// fork(user),
-		// fork(roles),
-		// fork(productTypes),
-		// fork(contract),
-		// fork(destinations)
+		fork(skillsSaga)
 	];
 }

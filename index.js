@@ -10,7 +10,7 @@ import configureStore from './store';
 import Root from './components/Root';
 import moment from 'moment';
 
-// import 'normalize.css/normalize.css'
+import 'semantic-ui-css/semantic.css'
 import './style/global.less'
 
 moment.locale('en-gb');

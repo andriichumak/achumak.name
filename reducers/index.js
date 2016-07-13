@@ -4,8 +4,13 @@
 import { routerReducer as routing } from 'react-router-redux'
 import { combineReducers } from 'redux'
 
+import skill from './skills'
+import entity from './entity'
+
 const rootReducer = combineReducers({
-	routing
+	routing,
+	skill,
+	entity
 });
 
 export default rootReducer;
