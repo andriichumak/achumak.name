@@ -1,34 +1,50 @@
 /**
  * Created by andy on 12-Jul-16.
  */
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
+// Mock data
+import employment from './dataMocks'
 
 export default class Experience extends Component {
+	state = {
+		active: 'mineus'
+	};
+
+	handleClick(item) {
+		this.setState({
+			active: item === this.state.active ? '' : item
+		});
+	}
+
 	render() {
 		return <div className="page experience">
+			<h1>My experience</h1>
 			<div className="ui styled fluid accordion">
-				<div className="active title">
-					<i className="dropdown icon"/>
-					What is a dog?
-				</div>
-				<div className="active content">
-					<p>A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.</p>
-				</div>
-				<div className="title">
-					<i className="dropdown icon"/>
-					What kinds of dogs are there?
-				</div>
-				<div className="content">
-					<p>There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion.</p>
-				</div>
-				<div className="title">
-					<i className="dropdown icon"/>
-					How do you acquire a dog?
-				</div>
-				<div className="content">
-					<p>Three common ways for a prospective owner to acquire a dog is from pet shops, private owners, or shelters.</p>
-					<p>A pet shop may be the most convenient way to buy a dog. Buying a dog from a private owner allows you to assess the pedigree and upbringing of your dog before choosing to take it home. Lastly, finding your dog from a shelter, helps give a good home to a dog who may not find one so readily.</p>
-				</div>
+				{employment.map(job => (
+					<div key={job.id}>
+						<div className={`${this.state.active === job.id ? 'active' : ''} title`} onClick={this.handleClick.bind(this, job.id)}>
+							<i className="dropdown icon"/>
+							<b>{job.title}</b> [{job.dates[0].format('MMMM YYYY')} - {job.dates[1] ? job.dates[1].format('MMMM YYYY') : 'current'}] {job.role}
+						</div>
+						<ReactCSSTransitionGroup component="div"
+						                         transitionName="accordion"
+						                         transitionEnterTimeout={300}
+						                         transitionLeaveTimeout={300}>
+							{this.state.active === job.id ?
+								<div key={`content${job.id}`} className="active content">
+									<div className="ui horizontal bulleted list">
+										{job.links.map(link => <a className="item" key={link} href={link} target="_blank">{link}</a>)}
+									</div>
+									<ul>
+										{job.obligations.map(obl => <li key={obl}>{obl}</li>)}
+									</ul>
+								</div>
+							: null }
+						</ReactCSSTransitionGroup>
+					</div>
+				))}
 			</div>
 		</div>
 	}

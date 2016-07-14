@@ -22,11 +22,6 @@ const menuItems = [
 		to: '/experience',
 		index: false,
 		title: 'Experience'
-	},
-	{
-		to: '/education',
-		index: false,
-		title: 'Education'
 	}
 ];
 

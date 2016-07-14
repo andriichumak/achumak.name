@@ -8,13 +8,11 @@ import App from './components/App'
 import Index from './components/Home'
 import Skills from './components/Skills'
 import Experience from './components/Experience'
-import Education from './components/Education'
 
 export default (
 	<Route path="/" component={App}>
 		<IndexRoute component={Index}/>
 		<Route path="/skills" component={Skills}/>
 		<Route path="/experience" component={Experience}/>
-		<Route path="/education" component={Education}/>
 	</Route>
 );
