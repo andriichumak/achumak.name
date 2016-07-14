@@ -6,7 +6,7 @@ import { Route, IndexRoute, IndexRedirect } from 'react-router';
 
 import App from './components/App'
 import Index from './components/Home'
-import Skills from './components/Skills'
+import Skills from './containers/Skills'
 import Experience from './components/Experience'
 
 export default (
