@@ -10,18 +10,8 @@ import Skill from '../../components/Skill';
 
 @connect(selector, { loadSkills, applySkillFilter, applySkillSearch, applySkillPaging, applySkillSort })
 export default class Skills extends Component {
-	state = {
-		loading: true
-	};
-
 	componentWillMount() {
 		this.props.loadSkills();
-	}
-
-	componentDidMount() {
-		setTimeout(() => {
-			this.setState({loading: false});
-		}, 800);
 	}
 
 	handleSort(type, event) {
@@ -59,7 +49,7 @@ export default class Skills extends Component {
 	}
 
 	render() {
-		const { loading, items, cats, total, filters, pages } = this.props;
+		const { items, cats, total, filters, pages } = this.props;
 
 		const sorts = [
 			{
@@ -74,10 +64,7 @@ export default class Skills extends Component {
 			}
 		];
 
-		if (this.state.loading || loading)
-			return <div className="page skills"></div>;
-
-		return <div className="page skills">
+		return <div className="skills">
 			<h1>Skill matrix</h1>
 			<div className="ui two column stackable grid">
 				<div className="six wide column">

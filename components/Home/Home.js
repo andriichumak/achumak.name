@@ -4,22 +4,12 @@
 import React, {Component} from 'react';
 
 export default class Home extends Component {
-	state = {
-		loading: true
-	};
-
-	componentDidMount() {
-		setTimeout(() => {
-			this.setState({loading: false});
-		}, 800);
+	shouldComponentUpdate(newProps, newState) {
+		return false;
 	}
 
 	render() {
-		if (this.state.loading)
-			return <div className="page home"></div>;
-
-		return <div className="page home">
-			<div className="ui container">
+		return <div className="ui home container">
 				<div className="ui doubling stackable grid">
 					<div className="four wide column">
 						<img src={require('./avatar.jpg')} className="avatar"/>
@@ -34,7 +24,7 @@ export default class Home extends Component {
 							development of rich media content driven applications
 							for all sorts of platforms.
 						</p>
-						<a className="ui teal button" href="http://achumak.name/cv.pdf">
+						<a className="ui teal button" target="_blank" href="http://achumak.name/cv.pdf">
 							<i className="file pdf outline icon"/> Download CV in PDF
 						</a>
 					</div>
@@ -150,6 +140,5 @@ export default class Home extends Component {
 					</div>
 				</div>
 			</div>
-		</div>
 	}
 }

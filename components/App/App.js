@@ -1,9 +1,10 @@
 /**
  * Created by andy on 12-Jul-16.
  */
-import React, { Component } from 'react';
-import { Link } from 'react-router';
+import React, {Component} from 'react';
+import {Link} from 'react-router';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import Page from '../Page';
 
 import TopMenu from '../TopMenu';
 
@@ -50,23 +51,24 @@ export default class App extends Component {
 	}
 
 	render() {
-		const { children, location } = this.props;
-		const { activeIndex, inverseTransition } = this.state;
+		const {children, location} = this.props;
+		const {activeIndex, inverseTransition} = this.state;
 
 		return <div className="appRoot">
-			<TopMenu items={menuItems} activeIndex={activeIndex}/>
+			<div className="wrapper">
+				<TopMenu items={menuItems} activeIndex={activeIndex}/>
 
-			<ReactCSSTransitionGroup
-				component="div"
-				transitionName={inverseTransition ? 'pageFlipInverse' : 'pageFlip'}
-				transitionEnterTimeout={800}
-				transitionLeaveTimeout={800}
-			    className="pageWrap"
-			>
-				{React.cloneElement(children, {
-					key: location.pathname
-				})}
-			</ReactCSSTransitionGroup>
+				<ReactCSSTransitionGroup
+					component="div"
+					transitionName={inverseTransition ? 'pageFlipInverse' : 'pageFlip'}
+					transitionEnterTimeout={800}
+					transitionLeaveTimeout={800}
+				>
+					<Page key={location.pathname}>
+						{children}
+					</Page>
+				</ReactCSSTransitionGroup>
+			</div>
 		</div>
 	}
 }
