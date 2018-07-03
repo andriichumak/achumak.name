@@ -2,6 +2,7 @@
  * Created by andy on 12-Jul-16.
  */
 import React, {Component} from 'react';
+import moment from 'moment';
 
 export default class Home extends Component {
 	shouldComponentUpdate(newProps, newState) {
@@ -17,7 +18,7 @@ export default class Home extends Component {
 					<div className="middle aligned six wide column">
 						<h1 className="ui horizontal divider header">Andrii Chumak</h1>
 						<p>
-							<b>Software Engineer</b> with over 6 years of commercial experience in web programming.
+							<b>Software Engineer</b> with over {moment.duration(moment('2010-06-01').diff(moment())).humanize()} of commercial experience in web programming.
 						</p>
 						<p>
 							I specialize in <b>ECMAScript</b> (aka <b>JavaScript</b>)
