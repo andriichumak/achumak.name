@@ -34,8 +34,4 @@ window.addEventListener('load', () => {
 	nav.addEventListener('click', e => {
 		header.classList.remove('unfold');
 	});
-
-	document.querySelector('#print').addEventListener('click', () => {
-		window.print();
-	});
 });
