@@ -9,8 +9,6 @@
 	--gradient: linear-gradient(45deg, var(--color-blue), var(--color-red));
 
 	--border-radius: 1em;
-	/* TODO - this should be calc */
-	--menu-height: -120px;
 }
 
 /**
@@ -26,17 +24,16 @@ body {
 	background: var(--gradient) fixed;
 }
 
-header, footer {
+footer {
 	color: var(--color-white);
 	font-weight: lighter;
 	padding: 1em;
+	display: flex;
+	justify-content: space-between;
+	box-sizing: border-box;
 }
 
-footer {
-	text-align: center;
-}
-
-footer a, header a {
+footer a {
 	color: var(--color-white);
 	text-decoration: underline;
 }
@@ -48,6 +45,7 @@ article {
 	box-sizing: border-box;
 	display: flex;
 	flex-flow: row wrap;
+	margin-top: 2em;
 }
 
 section {
@@ -166,45 +164,6 @@ p {
 
 .list--neutral li, .list .list__item--neutral {
 	border-left-color: var(--color-yellow);
-}
-
-/**
- * Menu button, header
- */
-.menu-button {
-	border: none;
-	outline: none;
-	background: none;
-	color: var(--color-white);
-	text-shadow: 1px 1px 2px var(--color-shadow);
-	margin-bottom: 10px;
-}
-
-header {
-	margin-bottom: var(--menu-height);
-	overflow: hidden;
-	transition: margin-bottom .2s linear;
-}
-
-header nav {
-	opacity: 0;
-	transition: opacity .2s linear;
-}
-
-header.unfold {
-	margin-bottom: 0;
-}
-
-header.unfold nav {
-	opacity: 1;
-}
-
-header nav li {
-	margin: 5px 5px 10px;
-}
-
-header nav li a {
-	text-decoration: none;
 }
 
 /**
@@ -330,25 +289,11 @@ header nav li a {
 		box-sizing: border-box;
 		padding-right: 3rem;
 	}
-	header, article, footer {
+	article, footer {
 		width: 900px;
 		align-self: center;
 		margin-left: auto;
 		margin-right: auto;
-	}
-
-	header {
-		margin-bottom: 0;
-	}
-
-	header nav {
-		display: block;
-		opacity: 1;
-	}
-
-	header nav ul {
-		display: flex;
-		justify-content: space-around;
 	}
 
 	.menu-button {
@@ -366,7 +311,7 @@ header nav li a {
 		background-image: none;
 	}
 
-	header, footer, .section-status {
+	footer {
 		display: none;
 	}
 
