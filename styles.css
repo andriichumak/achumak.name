@@ -213,35 +213,6 @@ p {
 	left: -27px;
 }
 
-/**
- * Back to TOP button
- */
-#top {
-	outline: none;
-	border: none;
-	display: block;
-	position: fixed;
-	bottom: 5px;
-	left: 50%;
-	background: var(--gradient);
-	width: 50px;
-	height: 50px;
-	border-radius: 25px;
-	color: var(--color-white);
-	font-size: 30px;
-	line-height: 50px;
-	text-align: center;
-	box-shadow: 0 0 5px 1px var(--color-shadow);
-	transform: translate(-25px, 60px);
-	opacity: 0;
-	transition: transform .2s linear, opacity .2s linear;
-}
-
-#top.top-in {
-	transform: translate(-25px, 0);
-	opacity: 1;
-}
-
 .section-assessment__container {
 	display: flex;
 	flex-flow: row wrap;
