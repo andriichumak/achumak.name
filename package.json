@@ -4,20 +4,19 @@
   "description": "Personal website / online CV",
   "main": "index.js",
   "scripts": {
-    "start": "http-server -c-1 -p 8080 .",
-    "build": "npm run build:clean && npm run build:html && npm run build:css && npm run build:js && npm run build:img",
-    "build:clean": "rm -rf ./dist && mkdir dist",
-    "build:html": "html-minifier --collapse-whitespace --remove-comments --remove-optional-tags --remove-redundant-attributes --remove-script-type-attributes --remove-tag-whitespace --use-short-doctype -o dist/index.html ./index.html",
-    "build:css": "cleancss -o dist/reset.css reset.css && cleancss -o dist/styles.css styles.css",
-    "build:js": "terser --compress --mangle -o dist/script.js script.js",
-    "build:img": "cp avatar.jpg dist/avatar.jpg"
+    "start": "npm run build && http-server -c-1 -p 8080 dist",
+    "build": "node scripts/build.js && npm run build:minify",
+    "build:minify": "html-minifier --collapse-whitespace --remove-comments --remove-optional-tags --remove-redundant-attributes --remove-script-type-attributes --remove-tag-whitespace --use-short-doctype -o dist/index.html dist/index.html && cleancss -o dist/styles.css dist/styles.css"
   },
   "author": "Andy Chumak",
   "private": true,
+  "dependencies": {
+    "gray-matter": "^4.0.3",
+    "markdown-it": "^14.1.0"
+  },
   "devDependencies": {
     "clean-css-cli": "^4.3.0",
     "html-minifier": "^4.0.0",
-    "http-server": "^14.1.0",
-    "terser": "^5.10.0"
+    "http-server": "^14.1.0"
   }
 }

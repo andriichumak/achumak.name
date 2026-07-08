@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{title}}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<meta name="description" content="Personal website and CV of {{name}}."/>
+	<link type="text/css" rel="stylesheet" href="styles.css"/>
+	<link rel="shortcut icon" href="favicon.ico"/>
+</head>
+<body>
+<div class="page">
+	<header class="hero">
+		<img class="hero__avatar" src="{{avatar}}" alt="{{name}} avatar"/>
+		<h1 class="hero__name">{{name}}</h1>
+		<p class="hero__location">{{location}}</p>
+		<nav class="hero__contact">
+			<a href="{{phoneHref}}">{{phone}}</a>
+			<a href="mailto:{{email}}">{{email}}</a>
+			<a target="_blank" rel="noopener" href="{{linkedin}}">LinkedIn</a>
+			<a target="_blank" rel="noopener" href="{{github}}">GitHub</a>
+		</nav>
+	</header>
+	<main class="content">
+{{content}}
+	</main>
+	<footer class="footer">
+		<a target="_blank" rel="noopener" href="{{repo}}">Source on GitHub</a>
+		<a href="{{resume}}" target="_blank">Download résumé</a>
+	</footer>
+</div>
+</body>
+</html>
