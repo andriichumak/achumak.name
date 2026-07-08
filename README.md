@@ -8,18 +8,22 @@ in [`content/home.md`](content/home.md) — edit that file to update the CV.
 ## How it works
 
 - `content/home.md` — the CV content. Front matter holds contact details
-  (name, location, phone, email, social links), the Markdown body is the
-  page content (bio, work experience, education, etc.).
+  (name, location, social links, path to the generated résumé PDF), the
+  Markdown body is the page content (bio, work experience, education, etc.).
 - `templates/layout.html` — the HTML shell the content is rendered into.
-- `styles.css` — the stylesheet.
+- `styles.css` — the stylesheet, including the print styles used for the PDF.
 - `scripts/build.js` — renders the Markdown + template into `dist/index.html`
   and copies static assets into `dist/`.
+- `scripts/pdf.js` — renders `dist/index.html` in headless Chromium and saves
+  it as the downloadable résumé PDF (path taken from the `resume` front
+  matter field), so the PDF always matches the page's content and styling.
 
 ## Local development
 
 ```bash
 npm install
-npm run build   # generates ./dist
+npx playwright install chromium   # one-time, needed to render the PDF
+npm run build   # generates ./dist, including the résumé PDF
 npm start       # builds and serves ./dist on http://localhost:8080
 ```
 

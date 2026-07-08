@@ -252,6 +252,37 @@ body {
 		background: none;
 	}
 
+	.page {
+		max-width: none;
+		padding: 0;
+	}
+
+	.hero {
+		margin-bottom: 2rem;
+	}
+
+	.hero__avatar {
+		width: 84px;
+		height: 84px;
+		margin-bottom: 1rem;
+	}
+
+	.content h2 {
+		margin-top: 2rem;
+	}
+
+	.content h2, .content h3 {
+		break-after: avoid;
+	}
+
+	.content h3 + p {
+		break-before: avoid;
+	}
+
+	.content ul {
+		break-inside: avoid;
+	}
+
 	.footer {
 		display: none;
 	}
