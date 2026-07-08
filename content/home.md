@@ -2,9 +2,6 @@
 title: Andy Chumak
 name: Andy Chumak
 location: Prague, Czech Republic
-phone: "+420 773 131 891"
-phoneHref: "tel:+420773131891"
-email: me@achumak.name
 website: https://achumak.name
 linkedin: https://www.linkedin.com/in/andreychumak
 github: https://github.com/andreychumak
